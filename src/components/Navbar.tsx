@@ -14,6 +14,7 @@ import {
 import { useTheme } from "next-themes";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Button } from "./ui/button";
+import { SidebarTrigger } from "./ui/sidebar";
 
 
 
@@ -22,7 +23,7 @@ const Navbar = () => {
     return (
         <nav className="p-4 flex items-center justify-between">
             {/* left */}
-            collapseButton
+            <SidebarTrigger />
 
             {/* right */}
             <div className=" flex items-center gap-4">

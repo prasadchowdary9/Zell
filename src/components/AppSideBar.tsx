@@ -1,41 +1,121 @@
-import { Calendar, Home, Inbox, Link, Search, Settings, Sidebar } from "lucide-react";
-import { SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
+import { Calendar, ChartPie, LayoutDashboardIcon, Search, Settings, UsersRound } from "lucide-react"
 
-// Menu items
+import {
+    Sidebar,
+    SidebarContent,
+    SidebarFooter,
+    SidebarGroup,
+    SidebarGroupContent,
+    SidebarGroupLabel,
+    SidebarHeader,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+    SidebarSeparator,
+} from "@/components/ui/sidebar"
+import Link from "next/link"
+
+// Menu items.
 const items = [
-    { title: "Home", url: "#", icon: Home },
-    { title: "Inbox", url: "#", icon: Inbox },
-    { title: "Calendar", url: "#", icon: Calendar },
-    { title: "Search", url: "#", icon: Search },
-    { title: "Settings", url: "#", icon: Settings },
-];
+    {
+        title: "Dashboard",
+        url: "#",
+        icon: LayoutDashboardIcon,
+    },
+    {
+        title: "Users",
+        url: "#",
+        icon: UsersRound,
+    },
+    {
+        title: "Calendar",
+        url: "#",
+        icon: Calendar,
+    },
+    {
+        title: "Search",
+        url: "#",
+        icon: Search,
+    },
+    {
+        title: "Settings",
+        url: "#",
+        icon: Settings,
+    },
+]
+const analyticItems = [
+    {
+        title: "Product Analytics",
+        url: "#",
+        icon: ChartPie,
+    },
+    {
+        title: "Users Analytics",
+        url: "#",
+        icon: ChartPie,
+    },
+    {
+        title: "Revenue Analytics",
+        url: "#",
+        icon: ChartPie,
+    },
+]
 
-// Corrected AppSideBar Component
-const AppSideBar = () => {
+export function AppSidebar() {
     return (
-        <Sidebar>
-            <SidebarHeader></SidebarHeader>
+        <Sidebar collapsible="icon">
+            <SidebarHeader>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton asChild>
+                            <Link href="#" >
+                                {/* <Image src="/logo.svg" alt={"logo"} width={20} height={20} /> */}
+                                <span className="text-bold text-color-green">Zell</span>
+                            </Link>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarHeader>
+            <SidebarSeparator />
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>APPLICATION</SidebarGroupLabel>
+                    <SidebarGroupLabel>Application</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton>
-                                        <Link href={item.url}>
+                                    <SidebarMenuButton asChild>
+                                        <a href={item.url}>
                                             <item.icon />
                                             <span>{item.title}</span>
-                                        </Link>
+                                        </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
-            </SidebarContent>
-        </Sidebar>
-    );
-};
 
-export default AppSideBar;
+                <SidebarGroup>
+                    <SidebarGroupLabel>Analytics</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {analyticItems.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton asChild>
+                                        <a href={item.url}>
+                                            <item.icon />
+                                            <span>{item.title}</span>
+                                        </a>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+
+            </SidebarContent>
+            <SidebarFooter>Footer</SidebarFooter>
+        </Sidebar>
+    )
+}
