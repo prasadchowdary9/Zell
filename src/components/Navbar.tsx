@@ -1,6 +1,6 @@
 "use client"
 import { AvatarImage } from "@radix-ui/react-avatar";
-import { LogOut, Moon, Settings, Sun, User } from "lucide-react";
+import { BellIcon, LogOut, Moon, Settings, Sun, User } from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -18,17 +18,29 @@ import { SidebarTrigger } from "./ui/sidebar";
 
 
 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 const Navbar = () => {
     const { theme, setTheme } = useTheme();
     return (
-        <nav className="p-4 flex items-center justify-between">
+        <nav className="p-4 flex items-center justify-between h-22">
             {/* left */}
             <SidebarTrigger />
 
             {/* right */}
-            <div className=" flex items-center gap-4">
-
+            <div className="flex items-center gap-4">
                 <Link href="/">DashBoard</Link>
+
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" size="icon">
@@ -50,6 +62,23 @@ const Navbar = () => {
                     </DropdownMenuContent>
                 </DropdownMenu>
 
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="outline" size="icon">
+                            <BellIcon className="h-[1.2rem] w-[1.2rem]" />
+                            <span className="sr-only">Notifications</span>
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+
+                        <DropdownMenuItem>
+                            No notifications
+                        </DropdownMenuItem>
+
+                    </DropdownMenuContent>
+                </DropdownMenu>
 
                 <DropdownMenu>
                     <DropdownMenuTrigger><Avatar>
@@ -66,19 +95,30 @@ const Navbar = () => {
                         <DropdownMenuItem>
                             <Settings className="h-[1.2rem] w-[1.2rem] mr-2"  />
                             Settings
-
                         </DropdownMenuItem>
-                        <DropdownMenuItem variant="destructive">
-                            <LogOut className="h-[1.2rem] w-[1.2rem] mr-2"  />
-                            Logout
-                        </DropdownMenuItem>
-
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                                    <LogOut className="h-[1.2rem] w-[1.2rem] mr-2 text-red-500" />
+                                    <span className="text-red-500">Logout</span>
+                                </DropdownMenuItem>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>Are you sure you want to logout?</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        This action will end your current session.
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    <AlertDialogAction>Logout</AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
                     </DropdownMenuContent>
                 </DropdownMenu>
-
-
             </div>
-
         </nav>
     );
 }
