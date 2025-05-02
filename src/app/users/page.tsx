@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button} from "@/components/ui/button";
 import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import { MoreVertical, Trash2 } from "lucide-react";
+import { Edit, MoreVertical, Trash2 } from "lucide-react";
 import React from "react";
 
 const dummyFarmers = [
@@ -98,7 +98,9 @@ export default function FarmersPage() {
                                 </Button>
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="end">
-                                <DropdownMenuItem>Edit</DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <Edit />
+                                        Edit</DropdownMenuItem>
                                     <AlertDialog>
                                         <AlertDialogTrigger asChild>
                                             <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
