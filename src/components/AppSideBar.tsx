@@ -52,7 +52,7 @@ const analyticItems = [
     },
     {
         title: "Revenue Analytics",
-        url: "#",
+        url: "/pages/analytics/revenue",
         icon: ChartNoAxesColumnIncreasingIcon
 
     },
@@ -70,10 +70,20 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton asChild>
-                            <Link href="/" >
-                                {/* <Image src="/logo.svg" alt={"logo"} width={20} height={20} /> */}
-                                <span className="text-bold text-color-green">AGRI ONE</span>
-                            </Link>
+                        <Link href="/" className="flex items-center no-underline">
+            <span className="text-2xl font-extrabold text-green-700  flex items-center">
+                AGRI
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 mx-1 text-green-500"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                >
+                    
+                </svg>
+                (<span className="text-green-600">ONE</span>)
+            </span>
+        </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
