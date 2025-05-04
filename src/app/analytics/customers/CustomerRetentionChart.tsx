@@ -39,7 +39,7 @@ const CustomerRetentionChart: React.FC = () => {
             id="period"
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="ml-2 p-2 border rounded bg-black text-white-700"
+            className="ml-2 p-2 border border-gray-600 rounded bg-black text-white hover:bg-gray-900"
           >
             <option value="Weekly">Weekly</option>
             <option value="Monthly">Monthly</option>
