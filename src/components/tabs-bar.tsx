@@ -37,35 +37,30 @@ export function DashboardTabs({ }) {
                     <TabsTrigger value="outline">Outline</TabsTrigger>
                     <TabsTrigger value="past-performance" className="gap-1">
                         Past Performance
-                        <Badge variant="secondary" className="h-5 w-5 rounded-full bg-muted-foreground/30">
-                            3
-                        </Badge>
+                
                     </TabsTrigger>
                     <TabsTrigger value="key-personnel" className="gap-1">
                         Key Personnel
-                        <Badge variant="secondary" className="h-5 w-5 rounded-full bg-muted-foreground/30">
-                            2
-                        </Badge>
                     </TabsTrigger>
-                    <TabsTrigger value="focus-documents">Focus Documents</TabsTrigger>
+                    <TabsTrigger value="focus-documents">Low stock</TabsTrigger>
                 </TabsList>
             </div>
 
-            <TabsContent value="outline" className="flex flex-col gap-4 px-4  lg:px-6">
+            <TabsContent value="outline" className="flex flex-col gap-4 px-4 lg:px-6 min-h-[300px]">
                 {/* Your outline tab content goes here */}
                 <div className="rounded border p-4 shadow-sm">Outline Content</div>
             </TabsContent>
-            <TabsContent value="past-performance">
+            <TabsContent value="past-performance" className="min-h-[300px]">
                 {/* Your past performance tab content goes here */}
                 <div className="rounded border p-4 shadow-sm">Past Performance Content</div>
             </TabsContent>
-            <TabsContent value="key-personnel">
+            <TabsContent value="key-personnel" className="min-h-[300px]">
                 {/* Your key personnel tab content goes here */}
                 <div className="rounded border p-4 shadow-sm">Key Personnel Content</div>
             </TabsContent>
-            <TabsContent value="focus-documents">
+            <TabsContent value="focus-documents" className="min-h-[300px]">
                 {/* Your focus documents tab content goes here */}
-                <div className="rounded border p-4 shadow-sm">Focus Documents Content</div>
+                <div className="rounded border p-4 shadow-sm">Low stock</div>
             </TabsContent>
         </Tabs>
     )

@@ -1,5 +1,4 @@
 "use client"
-
 import * as React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
@@ -28,6 +27,7 @@ import {
     ToggleGroup,
     ToggleGroupItem,
 } from "@/components/ui/toggle-group"
+
 const chartData = [
     { date: "2024-04-01", desktop: 222, mobile: 150 },
     { date: "2024-04-02", desktop: 97, mobile: 180 },
@@ -128,11 +128,11 @@ const chartConfig = {
     },
     desktop: {
         label: "Desktop",
-        color: "hsl(var(--chart-1))",
+        color: "#6a4cfc", // Updated color for Desktop (Purple)
     },
     mobile: {
         label: "Mobile",
-        color: "hsl(var(--chart-2))",
+        color: "#f39c12", // Updated color for Mobile (Yellow)
     },
 } satisfies ChartConfig
 
@@ -219,24 +219,24 @@ export function ChartAreaInteractive() {
                             <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
                                 <stop
                                     offset="5%"
-                                    stopColor="var(--color-desktop)"
+                                    stopColor="#6a4cfc" // Updated color (Purple)
                                     stopOpacity={1.0}
                                 />
                                 <stop
                                     offset="95%"
-                                    stopColor="var(--color-desktop)"
+                                    stopColor="#6a4cfc" // Updated color (Purple)
                                     stopOpacity={0.1}
                                 />
                             </linearGradient>
                             <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
                                 <stop
                                     offset="5%"
-                                    stopColor="var(--color-mobile)"
+                                    stopColor="#f39c12" // Updated color (Yellow)
                                     stopOpacity={0.8}
                                 />
                                 <stop
                                     offset="95%"
-                                    stopColor="var(--color-mobile)"
+                                    stopColor="#f39c12" // Updated color (Yellow)
                                     stopOpacity={0.1}
                                 />
                             </linearGradient>
@@ -274,14 +274,14 @@ export function ChartAreaInteractive() {
                             dataKey="mobile"
                             type="natural"
                             fill="url(#fillMobile)"
-                            stroke="var(--color-mobile)"
+                            stroke="#f39c12" // Updated color (Yellow)
                             stackId="a"
                         />
                         <Area
                             dataKey="desktop"
                             type="natural"
                             fill="url(#fillDesktop)"
-                            stroke="var(--color-desktop)"
+                            stroke="#6a4cfc" // Updated color (Purple)
                             stackId="a"
                         />
                     </AreaChart>

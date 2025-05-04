@@ -14,7 +14,8 @@ import {
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { Edit, MoreVertical, Trash2 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import CustomerForm from "./CustomerForm";
 
 const dummyFarmers = [
     { id: 1, name: "Ravi Kumar", phone: "9876543210", village: "Anakapalle" },
@@ -32,6 +33,7 @@ const dummyFarmers = [
 export default function FarmersPage() {
     const [searchTerm, setSearchTerm] = React.useState("");
     const [villageFilter, setVillageFilter] = React.useState("all");
+    const [isFormOpen, setIsFormOpen] = useState(false);
 
     const filteredFarmers = dummyFarmers.filter(
         (farmer) =>
@@ -48,8 +50,12 @@ export default function FarmersPage() {
         <div className="container mx-auto p-4">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold">Farmers</h1>
-                <Button className="bg-green-500 hover:bg-green-600">Add Farmer</Button>
+                <Button className="bg-green-500 hover:bg-green-600"
+                onClick={() => setIsFormOpen(true)}>Add Farmer</Button>
             </div>
+            {isFormOpen && (
+        <CustomerForm onClose={() => setIsFormOpen(false)} />
+      )}
 
             <div className="flex gap-4 mb-6">
                 <Input

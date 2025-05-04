@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import React from 'react';
+import React, { useState } from 'react';
+import ProductForm from "./ProductForm";
 
 const dummyProducts = [
     // Fertilizers
@@ -48,6 +49,7 @@ const dummyProducts = [
 export default function Page() {
   const [searchTerm, setSearchTerm] = React.useState('');
     const [categoryFilter, setCategoryFilter] = React.useState('all');
+    const [isFormOpen, setIsFormOpen] = useState(false);
 
 
     const filteredProducts = dummyProducts.filter(product =>
@@ -60,9 +62,17 @@ export default function Page() {
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Products Available</h1>
-        <Button className="bg-green-500 hover:bg-green-600">Add Product</Button>
+        <Button
+          className="bg-green-500 hover:bg-green-600"
+          onClick={() => setIsFormOpen(true)}
+        >
+          Add Product
+        </Button>
       </div>
-
+     
+      {isFormOpen && (
+        <ProductForm onClose={() => setIsFormOpen(false)} />
+      )}
       <div className="flex gap-4 mb-6">
         <Input
           placeholder="Search products..."
@@ -99,5 +109,7 @@ export default function Page() {
         ))}
       </div>
     </div>
+
+    
   );
 }
