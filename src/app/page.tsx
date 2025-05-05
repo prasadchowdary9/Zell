@@ -1,19 +1,12 @@
 
-
 import { ChartAreaInteractive } from "@/components/chart-area-interactive"
-
 import { SectionCards } from "@/components/section-cards"
-
 import { DashboardTabs } from "@/components/tabs-bar"
-
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-
-
 
 
 export default function ResizableDemo() {
   return (
-
     <SidebarProvider>
       <SidebarInset>
         <div className="flex flex-1 flex-col">
@@ -29,11 +22,6 @@ export default function ResizableDemo() {
         </div>
       </SidebarInset>
     </SidebarProvider>
-
-
-
-
-
   )
 }
 

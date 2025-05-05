@@ -24,12 +24,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SidebarSeparator } from "@/components/ui/sidebar";
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import { Edit, MoreVertical, Sidebar, Trash2 } from "lucide-react";
+import { Edit, MoreVertical, Plus, Trash2, User } from "lucide-react";
 import React, { useState } from "react";
 import CustomerForm from "./CustomerForm";
-import { SidebarSeparator } from "@/components/ui/sidebar";
 
 const dummyFarmers = [
   { id: 1, name: "Ravi Kumar", phone: "9876543210", village: "Anakapalle" },
@@ -68,6 +68,7 @@ export default function FarmersPage() {
           className="bg-green-500 hover:bg-green-600"
           onClick={() => setIsFormOpen(true)}
         >
+          <Plus />
           Add Farmer
         </Button>
       </div>
@@ -111,16 +112,19 @@ export default function FarmersPage() {
             className="flex items-center justify-between bg-primary-foreground shadow-md rounded-lg p-4"
           >
             <div>
-              <p className="text-lg font-semibold">{farmer.name}</p>
+              <p className="text-lg font-bold">{farmer.name}</p>
               <p className="text-sm text-gray-600">Phone: {farmer.phone}</p>
               <p className="text-sm text-gray-600">Village: {farmer.village}</p>
             </div>
             <div className="flex gap-2">
-              <Button variant="outline" className="bg-blue-600 text-white hover:bg-blue-700">View Profile</Button>
+
+
+              <Button variant="outline" className="bg-blue-500 dark:bg-blue-500 text-black hover:bg-blue-700 dark:hover:bg-blue-900"><User /> View Profile</Button>
               <Button
                 variant="outline"
-                className="bg-green-500 hover:bg-green-600"
+                className="bg-green-500 hover:bg-green-600 dark:bg-green-500 text-black hover:bg-green-600 dark:hover:bg-green-600"
               >
+                <Plus />
                 Add Transaction
               </Button>
               <DropdownMenu>
@@ -152,7 +156,7 @@ export default function FarmersPage() {
                       </AlertDialogHeader>
                       <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction>Delete</AlertDialogAction>
+                        <AlertDialogAction className="text-black-500 bg-red-600 " >Delete</AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>

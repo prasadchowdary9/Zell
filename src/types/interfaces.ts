@@ -2,18 +2,37 @@
 import { RoleType, ProductCategory, ProductUnit, NotificationType, PaymentMethod } from '@/types/enums';
 import { File } from 'buffer';
 
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  password: string; // In a real app, this would be hashed
-  role: RoleType;
-  phone?: string;
-  shopId: string;
-  createdAt: Date;
-  lastLogin?: Date;
-  updatedAt: Date;
+
+export type User = {
+  id: string
+  name: string
+  email: string
+  phone: string
+  gst?: string
+  password: string
+  is_verified: boolean
+  role: RoleType
+  business_name?: string
+  jwt_token?: string
+  jwt_token_expiry?: string 
+  forgot_password_token?: string
+  forget_password_token_expiry?: string 
+  address?: Address
+  created_at: string
+  updated_at: string
+  image?: string | File
 }
+
+export interface Address{
+  id: string;
+  street: string;
+  village: string;
+  mandal: string;
+  district: string;
+  state: string;
+  pincode?: string;
+}
+
 
 export interface Shop {
   id: string;
@@ -41,7 +60,7 @@ export interface Product {
   shopId: string;
   createdAt: Date;
   updatedAt: Date;
-  manufacturer:String;
+  manufacturer:string;
   expiryDate:Date;
   image?: File;
 }
@@ -64,7 +83,6 @@ export interface Customer {
   village?: string;
   mandal?: string;
   district?: string;
-
   shopId: string;
   createdAt: Date;
   updatedAt: Date;
@@ -75,7 +93,7 @@ export interface Transaction {
   customerId: string;
   shopId: string;
   items: TransactionItem[];
-  products: any[]; // For backwards compatibility
+  products: Product[]; 
   totalAmount: number;
   paidAmount: number;
   dueAmount: number;
@@ -104,6 +122,7 @@ export interface NotificationSetting {
 
 export interface DashboardStats {
   totalProducts: number;
+  totalCustomers: number;
   lowStockCount: number;
   recentProducts: Product[];
   totalSales: number;

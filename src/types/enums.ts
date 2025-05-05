@@ -1,8 +1,11 @@
 
 export enum RoleType {
+  SUPER_ADMIN = 'SUPER_ADMIN',
   ADMIN = 'ADMIN',
-  STAFF = 'STAFF',
-  CASHIER = 'CASHIER'
+  USER = 'USER',
+  STAFF='STAFF',
+  AGENT='AGENT',
+  TECHNICIAN = 'Technician',
 }
 
 export enum ProductCategory {
@@ -18,8 +21,8 @@ export enum ProductCategory {
 
 export enum ProductUnit {
   KG = 'kg',
-  G = 'g',
-  L = 'L',
+  GRAMS = 'grams',
+  LITRES = 'litres',
   ML = 'ml',
   PIECES = 'pcs',
   BAGS = 'bags',
@@ -30,8 +33,10 @@ export enum ProductUnit {
 export enum NotificationType {
   LOW_STOCK = 'Low Stock Alert',
   PAYMENT_DUE = 'Payment Due',
-  CUSTOMER_BIRTHDAY = 'Customer Birthday',
-  SPECIAL_OFFER = 'Special Offer'
+  ADMIN_MESSAGE = 'Admin Message',
+  HIGH_DUE = 'High Due',
+  
+
 }
 
 export enum PaymentMethod {
@@ -39,5 +44,10 @@ export enum PaymentMethod {
   CARD = 'Card',
   BANK_TRANSFER = 'Bank Transfer',
   MOBILE_PAYMENT = 'Mobile Payment',
-  CREDIT = 'Credit'
+  CREDIT = 'Credit',
+  DUE = 'Due',
+  PHONE_PAY='Phone Pay',
+  GOOGLE_PAY='Google Pay',
+  PAYTM='PayTM',
+  UPI='UPI',
 }
