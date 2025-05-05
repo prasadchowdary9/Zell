@@ -27,12 +27,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useOnlineStatus } from "./OnlineStatus";
+// import OnlineStatusDot from "./OnlineStatus";
+
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [heading, setHeading] = useState(
     "Bussiness Name"
   );
+  const isOnline = useOnlineStatus();
 
   return (
     <nav className="p-4 flex items-center justify-between border-b shadow-sm bg-primary-foreground h-22">
@@ -43,8 +47,16 @@ const Navbar = () => {
         {/* Dummy Business Name + Online Icon */}
         <div className="flex items-center space-x-2">
           <div className="flex items-center gap-2 px-3 py-1 rounded-lg text-sm font-medium">
-            <Wifi className="w-4 h-4" />
-            <span className="h-3 w-3 rounded-full bg-green-500 animate-pulse"></span>
+            <div
+              className={`rounded-full p-2 shadow-md transition-all duration-300 ${isOnline ? 'bg-green-100/20' : 'bg-red-100/20'
+                }`}
+              title={isOnline ? "Online" : "Offline"}
+            >
+              <Wifi
+                className="w-5 h-5"
+                color={isOnline ? "#22c55e" : "#ef4444"}
+              />
+            </div>
           </div>
 
         </div>
