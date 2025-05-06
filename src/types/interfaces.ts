@@ -9,6 +9,7 @@ export type User = {
   email: string
   phone: string
   gst?: string
+  shopId: string
   password: string
   is_verified: boolean
   role: RoleType
@@ -18,8 +19,8 @@ export type User = {
   forgot_password_token?: string
   forget_password_token_expiry?: string 
   address?: Address
-  created_at: string
-  updated_at: string
+  createdAt: Date
+  updatedAt: Date
   image?: string | File
 }
 

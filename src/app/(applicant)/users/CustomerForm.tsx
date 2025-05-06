@@ -22,6 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useRouter } from 'next/navigation';
 
 // ✅ Validation schema
 const formSchema = z.object({
@@ -42,6 +43,7 @@ interface CustomerFormProps {
 
 const CustomerForm: React.FC<CustomerFormProps> = ({ customer, onClose }) => {
   const isEdit = !!customer;
+  const navigate = useRouter();
 
   const defaultValues = {
     name: customer?.name || "",
@@ -90,7 +92,6 @@ const CustomerForm: React.FC<CustomerFormProps> = ({ customer, onClose }) => {
     "Lakshadweep",
     "Puducherry"
   ];
-  
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

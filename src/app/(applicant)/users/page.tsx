@@ -61,6 +61,10 @@ export default function FarmersPage() {
   const uniqueVillages = [
     ...new Set(dummyFarmers.map((farmer) => farmer.village)),
   ];
+  const handleNewTransaction = () => {
+    router.push(`/transactions/customerId=${1}`);
+  };
+
 
   return (
     <div className="container mx-auto p-4">
@@ -130,6 +134,7 @@ export default function FarmersPage() {
               <Button
                 variant="outline"
                 className="bg-green-500 hover:bg-green-600 dark:bg-green-500 text-black hover:bg-green-600 dark:hover:bg-green-600"
+                onClick={() => handleNewTransaction()}
               >
                 <Plus />
                 Add Transaction
