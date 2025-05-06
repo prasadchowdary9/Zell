@@ -2,11 +2,9 @@
 import { ChartAreaInteractive } from "@/components/chart-area-interactive"
 
 import { SectionCards } from "@/components/section-cards"
-import { SiteHeader } from "@/components/site-header"
 import { DashboardTabs } from "@/components/tabs-bar"
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-
 
 
 export default function Page() {

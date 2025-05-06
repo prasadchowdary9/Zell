@@ -1,7 +1,7 @@
 
-import { AppSidebar } from "@/components/AppSideBar";
 import Navbar from "@/components/Navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -33,6 +33,7 @@ export default async function RootLayout({
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
 
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning={true}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
@@ -43,17 +44,15 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange>
           <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
+
             <main className="w-full">
               <Navbar />
               <div className="px-4">{children}</div>
             </main>
-          </SidebarProvider>
-
-
-
+            </SidebarProvider>
         </ThemeProvider>
       </body>
-    </html>
+      </html>
+    </ClerkProvider>
   );
 }

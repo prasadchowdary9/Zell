@@ -74,7 +74,7 @@ const analyticItems = [
   },
   {
     title: "Sales Analytics",
-    url: "/analytics/sales",
+    url: "#",
     icon: LineChart,
   },
 ];
@@ -86,7 +86,7 @@ export function AppSidebar() {
         <SidebarMenu className="w-full">
           <SidebarMenuItem className="w-full">
             <SidebarMenuButton asChild className="w-full">
-              <Link href="/" className="flex items-center w-full no-underline">
+              <Link href="/dashboard" className="flex items-center w-full no-underline">
                 <span className="text-2xl font-bold leading-none w-full text-center">
                   <span className="text-green-800">AGRI</span>
                   <span className="text-green-500">[ONE]</span>

@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import React from 'react';
@@ -73,6 +73,11 @@ export default function Page() {
                             <p>Price: {item.price}</p>
                             <p>Category: {item.category}</p>
                         </CardContent>
+                        <CardFooter className="flex justify-end">
+                            <Button variant="outline" className="bg-blue-500 hover:bg-blue-600 text-white text-sm dark:bg-blue-700 dark:hover:bg-blue-800 dark:text-white">
+                                View Details
+                            </Button>
+                        </CardFooter>
                     </Card>
                 ))}
             </div>

@@ -1,9 +1,5 @@
 "use client";
 
-import React from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -22,6 +18,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Customer } from "@/types/interfaces";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 // ✅ Validation schema
 const formSchema = z.object({
@@ -31,6 +31,8 @@ const formSchema = z.object({
   village: z.string().optional(),
   mandal: z.string().optional(),
   state: z.string().min(1, "Please select a state"),
+  image: z.string().url("Invalid image URL"),
+  district: z.string().optional(),
 });
 
 interface CustomerFormProps {
@@ -241,7 +243,25 @@ const CustomerForm: React.FC<CustomerFormProps> = ({ customer, onClose }) => {
             <FormMessage />
           </FormItem>
         )}
-      />
+          />
+           {/* Image Upload Field */}
+              <FormField
+                control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem >
+                    <FormLabel>Farmer Image (Optional)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => field.onChange(e.target.files?.[0])}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
     </div>
 
     <div className="flex justify-end space-x-3 pt-6">

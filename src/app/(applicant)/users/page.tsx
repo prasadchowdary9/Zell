@@ -28,9 +28,9 @@ import { SidebarSeparator } from "@/components/ui/sidebar";
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { Edit, MoreVertical, Plus, Trash2, User } from "lucide-react";
-import React, { useState } from "react";
-import CustomerForm from "./CustomerForm";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import CustomerForm from "../users/CustomerForm";
 
 const dummyFarmers = [
   { id: 1, name: "Ravi Kumar", phone: "9876543210", village: "Anakapalle" },
