@@ -30,6 +30,7 @@ import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { Edit, MoreVertical, Plus, Trash2, User } from "lucide-react";
 import React, { useState } from "react";
 import CustomerForm from "./CustomerForm";
+import { useRouter } from "next/navigation";
 
 const dummyFarmers = [
   { id: 1, name: "Ravi Kumar", phone: "9876543210", village: "Anakapalle" },
@@ -48,6 +49,7 @@ export default function FarmersPage() {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [villageFilter, setVillageFilter] = React.useState("all");
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const router = useRouter();
 
   const filteredFarmers = dummyFarmers.filter(
     (farmer) =>
@@ -117,9 +119,14 @@ export default function FarmersPage() {
               <p className="text-sm text-gray-600">Village: {farmer.village}</p>
             </div>
             <div className="flex gap-2">
+              <Button
+                variant="outline"
+                className="bg-blue-500 dark:bg-blue-500 text-black hover:bg-blue-700 dark:hover:bg-blue-900"
+                onClick={() => router.push(`/users/${farmer.id}`)}
+              >
+                <User /> View Profile
+              </Button>
 
-
-              <Button variant="outline" className="bg-blue-500 dark:bg-blue-500 text-black hover:bg-blue-700 dark:hover:bg-blue-900"><User /> View Profile</Button>
               <Button
                 variant="outline"
                 className="bg-green-500 hover:bg-green-600 dark:bg-green-500 text-black hover:bg-green-600 dark:hover:bg-green-600"
@@ -156,7 +163,9 @@ export default function FarmersPage() {
                       </AlertDialogHeader>
                       <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction className="text-black-500 bg-red-600 " >Delete</AlertDialogAction>
+                        <AlertDialogAction className="text-black-500 bg-red-600 ">
+                          Delete
+                        </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
