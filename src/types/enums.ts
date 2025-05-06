@@ -35,8 +35,7 @@ export enum NotificationType {
   PAYMENT_DUE = 'Payment Due',
   ADMIN_MESSAGE = 'Admin Message',
   HIGH_DUE = 'High Due',
-  
-
+  MFG_EXPIRATION = 'Manufacturing Expiration',
 }
 
 export enum PaymentMethod {

@@ -1,15 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
 import { useRouter } from "next/navigation"; // Still needed for navigation
+import React, { useState } from "react";
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
   CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
 import {
   Table,
   TableBody,
@@ -18,20 +22,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import {
-  Calendar,
-  FileText,
-  Edit,
-  Trash2,
-  Download,
-  Printer,
-  ArrowLeft,
-} from "lucide-react";
 import { format } from "date-fns";
+import {
+  ArrowLeft,
+  Calendar,
+  Download,
+  Edit,
+  FileText,
+  Printer
+} from "lucide-react";
 
 // Enums & Types (mocked here)
 enum PaymentMethod {
@@ -98,7 +97,7 @@ const mockTransactions: Transaction[] = [
 const calculateInterest = (transaction: Transaction, interestRate: number) => {
   const daysOverdue = Math.floor(
     (new Date().getTime() - new Date(transaction.transactionDate).getTime()) /
-      (1000 * 60 * 60 * 24)
+    (1000 * 60 * 60 * 24)
   );
 
   if (transaction.dueAmount === 0 || daysOverdue <= 0) {
@@ -147,19 +146,19 @@ const CustomerDetailPage: React.FC = () => {
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <h1 className="text-3xl font-bold text-agri-green-800 dark:text-white">
-            Customer Profile
+            {customer.name} Profile
           </h1>
         </div>
         <div className="flex space-x-2">
           <Button
             onClick={handleGeneratePDF}
-            className="bg-agri-green-600 hover:bg-agri-green-700"
+            className="bg-green-600 hover:bg-green-700"
           >
             <Download className="mr-2 h-4 w-4" /> Export PDF
           </Button>
           <Button
             onClick={handleNewTransaction}
-            className="bg-agri-green-600 hover:bg-agri-green-700"
+            className="bg-green-600 hover:bg-green-700"
           >
             <FileText className="mr-2 h-4 w-4" /> New Transaction
           </Button>
@@ -188,15 +187,31 @@ const CustomerDetailPage: React.FC = () => {
         </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-agri-green-600">
-            <div className="pb-6 md:pb-0 md:pr-6">
-              <h3 className="text-lg font-semibold mb-2">Contact Info</h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {customer.email || "No email provided"}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                {customer.address || "No address provided"}
-              </p>
+            <div className="flex items-start justify-between pb-6 md:pb-0 md:pr-6">
+              {/* Right: Even Larger Dummy Photo */}
+              <div className="ml-6 w-38 h-42 flex-shrink-0 border border-green-300 rounded-xl overflow-hidden">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhWNWquYwXfQx7-OlHSRARnCZHifw2zKkQKv995Q480z_vfnLH1r856jESWN0xMkDPmUo&usqp=CAU"
+                  alt="Dummy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Left: Contact Info */}
+              <div className="mr-6">
+                <h3 className="text-lg font-semibold mb-2 ">Contact Info</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {customer.email || "No email provided"}
+                </p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {customer.address || "No address provided"}
+                </p>
+              </div>
+
+
+
             </div>
+
             <div className="py-6 md:px-6">
               <h3 className="text-lg font-semibold mb-2">Account Summary</h3>
               <p className="flex justify-between">
